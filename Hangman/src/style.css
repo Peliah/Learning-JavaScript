@@ -22,7 +22,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: 90vh;
 }
 
 .subContainer {
@@ -92,6 +92,8 @@ body {
     justify-content: center;
     /* align-items: center; */
     flex-direction: column;
+    /* background-color: #000; */
+    position: relative;
 }
 
 .work-area h4 {
@@ -107,7 +109,11 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    flex-direction: row
+    flex-direction: row;
+    /* background-color:#000; */
+    /* align-self: i; */
+    position: absolute;
+    bottom: 0;
 }
 
 .keyboard-space button {
@@ -158,10 +164,28 @@ body {
 
 .game-modal img {
     max-width: 130px;
+    margin-bottom: 20px;
 }
 
 .game-modal button {
     padding: 12px 23px;
+    margin-top: 20px;
+}
+
+.footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* min-height: 20vh; */
+    min-height: 10vh;
+    padding: 0 40px;
+}
+
+footer h4{
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #898989;
+    margin-left: 10px;    
 }
 
 @media(max-width: 600px) {
@@ -205,6 +229,7 @@ body {
 
     .work-area .keyboard-space {
         /* gap: px; */
+        position: relative;
     }
 
 
