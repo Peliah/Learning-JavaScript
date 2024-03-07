@@ -14,9 +14,7 @@
 body {
     width: 100%;
     height: 100%;
-    background-color: black;
-
-    background: fixed;
+    /* background: fixed; */
     background-color: #252525;
 }
 
@@ -32,7 +30,7 @@ body {
     border-radius: 10px;
     display: flex;
     align-items: flex-end;
-    width: 100vh;
+    width: 60%;
     /* gap: 70px; */
     padding: 60px 40px;
 }
@@ -64,17 +62,35 @@ body {
 .content-space {
     display: flex;
     width: 100%;
+    /* height: 100%; */
     /* align-items: center; */
     justify-content: space-between;
 }
 
 .hanging-space {
-    width: 20%;
+    width: 30%;
+    /* height: 100%; */
     background-color: #000;
+    border-radius: 10px;
+    padding: 10px;
+    /* position: relative; */
+    rotate: 180deg;
+}
+
+.bar {
+    border-radius: 5px;
+    /* bottom: 0; */
+    /* height: 20%; */
+    background-color: red;
+    /* position: absolute; */
 }
 
 .work-area {
-    width: 80%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
 }
 
 .work-area h4 {
@@ -93,9 +109,13 @@ body {
     flex-direction: row
 }
 
-.keyboard-space  button,
+.keyboard-space button {
+
+    width: calc(100% /9 - 0px);
+}
+
+.keyboard-space button,
 .game-modal button {
-    /* width: calc(100% /10 - 0px); */
     color: white;
     font-size: 1rem;
     font-weight: 600;
@@ -123,6 +143,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
 }
 
 .game-modal .modal-content {
@@ -142,7 +163,17 @@ body {
     padding: 12px 23px;
 }
 
-@media(max-width: 756px) {
+@media(max-width: 600px) {
+    .container {
+        align-items: start;
+    }
+
+    .subContainer {
+        width: 100%;
+        min-height: 90vh;
+        padding: 30px 20px;
+    }
+
     .content-space {
         flex-direction: column;
         padding: 30px, 15px;
@@ -162,15 +193,22 @@ body {
         width: 100%;
     }
 
-    .keyboard-space .row-1 button,
-    .row-2 button,
-    .row-3 button {
+    .keyboard-space button {
         padding: 5px;
         /* width: calc(100% / 7  - 5px); */
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .work-area .keyboard-space {
         /* gap: px; */
+    }
+
+
+}
+
+@media(max-width: 1000px) {
+    .subContainer {
+        width: 90%;
+        padding: 40px 20px;
     }
 }
