@@ -31,6 +31,7 @@ body {
     display: flex;
     align-items: flex-end;
     width: 60%;
+    height: 70vh;
     /* gap: 70px; */
     padding: 60px 40px;
 }
@@ -62,7 +63,7 @@ body {
 .content-space {
     display: flex;
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     /* align-items: center; */
     justify-content: space-between;
 }
@@ -165,13 +166,15 @@ body {
 
 @media(max-width: 600px) {
     .container {
-        align-items: start;
+        /* align-items: start; */
     }
 
     .subContainer {
         width: 100%;
-        min-height: 90vh;
+        min-height: 80vh;
         padding: 30px 20px;
+        height: fit-content;
+        height: 100%;
     }
 
     .content-space {
@@ -180,6 +183,7 @@ body {
         align-items: center;
         width: 100%;
         gap: 70px;
+        height: 100%;
         /* background-color: black; */
     }
 
