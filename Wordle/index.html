@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/src/scripts/main.js"></script>
+    <script src="./src/scripts/wordlist.js"></script>
+    <script src="./src/scripts/main.js"></script>
     <link rel="stylesheet" href="./src/style.css">
     <title>Wordle | Peliah</title>
 </head>
 <body>
+    <div class="game-modal">
+        <div class="modal-content">
+            <img src="" alt="" srcset="">
+            <h4>Game Over !</h4>
+            <p>The correct word was <b>rainbow</b></p>
+            <button class="play-again key-btns">Play Again</button>
+        </div>
+    </div>
     <div class="container">
         <div class="game">
 
@@ -25,6 +34,10 @@
             <div class="keyboard-container">
 
             </div>
+            <footer class="footer">
+                <img src="./src/assets/logoLight.png" height="30" width="30" alt="logo"/>
+                <h4>&copy;Peliah</h4>
+            </footer>
         </div>
     </div>
 </body>
