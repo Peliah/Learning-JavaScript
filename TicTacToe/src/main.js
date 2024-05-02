@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const tile = document.createElement('button');
             tile.id = id
             tile.classList.add('tile');
-            // tile.innerText="X"
             tile.addEventListener("click", () => playGame(tile.id))
 
             tiles.appendChild(tile);
@@ -51,9 +50,10 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("hi");
         for (const correctArray of correctCombination) {
             if (correctArray.every(e =>array.includes(e))){
-                console.log("You win");
+                return true
             }
         }
+        return
     }
 
 
