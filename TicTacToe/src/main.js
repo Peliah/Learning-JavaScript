@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const footer = document.createElement('div');
     footer.classList.add('footer');
-    footer.innerHTML = `<img src="../assets/logoLight.png" height="40" width="40" alt="logo"/>
+    footer.innerHTML = `<img src="./assets/logoLight.png" height="40" width="40" alt="logo"/>
     <h4>&copy;Peliah</h4>`
 
     const tiles = document.createElement('div');
