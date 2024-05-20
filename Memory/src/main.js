@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // compare();
-
+    console.log(window.innerWidth);
     showCards()
 
 });
