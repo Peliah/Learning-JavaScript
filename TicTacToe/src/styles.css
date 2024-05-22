@@ -29,8 +29,8 @@ body {
 /* Header styles */
 .header {
     display: flex;
-    padding-top:15px ;
-    padding-bottom:15px ;
+    padding-top: 15px;
+    padding-bottom: 15px;
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid #abb2bf;
@@ -50,6 +50,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    position: relative;
 }
 
 /* Footer styles */
@@ -61,7 +62,7 @@ body {
     padding: 0 40px;
 }
 
-.tiles{
+.tiles {
     width: 600px;
     height: 600px;
     display: flex;
@@ -69,10 +70,10 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
 }
 
-.tile{
+.tile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,4 +84,78 @@ body {
     font-size: 6rem;
     color: white;
     background-color: transparent;
+}
+
+.card-face {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.players {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+}
+
+.player-div {
+    /* width: 50%; */
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+/* @media (max-width: 1440px) {
+    .player-div {
+        width: 100%;
+        height: 60px;
+    }
+
+    .players {
+        width: 100%;
+        flex-direction: row;
+    }
+} */
+
+@media(max-width: 600px) {
+    .tiles {
+        width: 400px;
+        height: 400px;
+        gap: 15px;
+    }
+
+    .tile {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* .player-div {
+        width: 100%;
+        height: 60px;
+    }
+
+    .players {
+        width: 100%;
+        flex-direction: row;
+    } */
+}
+
+@media(max-width: 400px) {
+    .tiles {
+        width: 350px;
+        height: 350px;
+        gap: 15px;
+    }
+
+    .tile {
+        width: 100px;
+        height: 100px;
+    }
+
 }

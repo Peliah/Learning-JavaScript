@@ -24,6 +24,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const tiles = document.createElement('div');
     tiles.classList.add('tiles');
 
+    const players = document.createElement('div');
+    players.classList.add('players');
+    players.innerHTML = `
+        <div class="player-div">
+            <h4>
+                Player 1:
+            </h4>
+            <div>
+                <img class="card-face image-back" style="background:#000;" src="./assets/apple.png" alt="card" />
+            </div>
+        </div>
+        <div class="player-div">
+            <h4>
+                Player 2:
+            </h4>
+            <div>
+                <img class="card-face image-back" src="./assets/face.png" alt="card" />
+            </div>
+        </div>
+    `;
+
 
     const container = document.querySelector('.container');
     container.appendChild(header)
@@ -31,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
     container.appendChild(footer)
 
     main.appendChild(tiles);
+    main.appendChild(players);
 
     // create the tiles
     for (let row = 0; row < 3; row++) {
@@ -46,10 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    const checkWinner=(array)=>{
+    const checkWinner = (array) => {
         console.log("hi");
         for (const correctArray of correctCombination) {
-            if (correctArray.every(e =>array.includes(e))){
+            if (correctArray.every(e => array.includes(e))) {
+                console.log("a win");
                 return true
             }
         }
@@ -62,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(turn % 2);
         if (turn % 2) {
             console.log("it's x's turn");
-            tile.innerText = "X";
+            tile.innerHTML = `<img class="card-face image-back" src="./assets/face.png" alt="card" />`;
             tile.disabled = true;
             xArray.push(parseInt(tileId));
             xArray.sort();
@@ -70,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
             checkWinner(xArray);
         } else {
             console.log("It's o's turn");
-            tile.innerText = "O";
+            tile.innerHTML = `<img class="card-face image-back" src="./assets/apple.png" alt="card" />`;
             tile.disabled = true;
             oArray.push(parseInt(tileId));
             oArray.sort();
