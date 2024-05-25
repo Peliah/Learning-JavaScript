@@ -52,9 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <img src="" alt="" srcset="">
             <h4>Game Over !</h4>
             <p>The correct word was</p>
-            <button class="play-again key-btns">Play Again</button>
+            <button class="play-again">Play Again</button>
         </div>
     `;
+    // const playAgain = document.querySelector('.play-again');
 
     const container = document.querySelector('.container');
     container.appendChild(header)
@@ -78,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
     }
+
     const sleep = (ms) => new Promise(r => setTimeout(r, ms));
     const gameOver = (won) => {
         const modalText = won % 2 ? `Ha ha ha ha!!!\n I eat you for Breakfast ` : `Haaaa!!! In your face. Your ugly anyway `;
@@ -88,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const confeti = () => {
-        const duration = 5 * 1000,
+        const duration = 1 * 1000,
             animationEnd = Date.now() + duration,
             defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -122,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const checkWinner = async (array, turn) => {
-        const tiles = document.querySelectorAll('button');
+        const tiles = document.querySelectorAll('.tile');
         console.log("hi");
         for (const correctArray of correctCombination) {
             if (correctArray.every(e => array.includes(e))) {
@@ -130,11 +132,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 confeti()
                 if (turn % 2) {
                     console.log("face win");
-                    await sleep(700)
+                    await sleep(2000)
                     gameOver(turn)
                 } else {
                     console.log("apple win");
-                    await sleep(4000)
+                    await sleep(2000)
                     gameOver(turn)
 
                 }
@@ -167,5 +169,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         turn++;
     }
+
+    const reset = () => {
+        console.log("heyyo");
+        const tile = tiles.querySelectorAll("button");
+        tile.forEach(btn => btn.innerHTML = ``)
+        tile.forEach(btn => btn.disabled = false);
+        turn = 0;
+        id = 1;
+        xArray = [];
+        oArray = [];
+        gameModal.style.display = "none"
+    }
+
+    gameModal.querySelector("button").addEventListener("click", reset)
 
 });
