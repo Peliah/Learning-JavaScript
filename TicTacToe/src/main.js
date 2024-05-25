@@ -45,6 +45,16 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     `;
 
+    const gameModal = document.createElement('div');
+    gameModal.classList.add('game-modal');
+    gameModal.innerHTML = `
+        <div class="modal-content">
+            <img src="" alt="" srcset="">
+            <h4>Game Over !</h4>
+            <p>The correct word was</p>
+            <button class="play-again key-btns">Play Again</button>
+        </div>
+    `;
 
     const container = document.querySelector('.container');
     container.appendChild(header)
@@ -53,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     main.appendChild(tiles);
     main.appendChild(players);
+    main.appendChild(gameModal);
 
     // create the tiles
     for (let row = 0; row < 3; row++) {
@@ -67,12 +78,66 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
     }
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+    const gameOver = (won) => {
+        const modalText = won % 2 ? `Ha ha ha ha!!!\n I eat you for Breakfast ` : `Haaaa!!! In your face. Your ugly anyway `;
+        gameModal.querySelector("img").src = `./assets//${won % 2 ? 'face.png' : 'apple.png'}`;
+        gameModal.querySelector("h4").innerText = `${won % 2 ? 'Face Wins!' : 'Apple wins!'}`;
+        gameModal.querySelector("p").innerHTML = `${modalText}`;
+        gameModal.style.display = "flex"
+    }
 
-    const checkWinner = (array) => {
+    const confeti = () => {
+        const duration = 5 * 1000,
+            animationEnd = Date.now() + duration,
+            defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        const interval = setInterval(function () {
+            const timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) {
+                return clearInterval(interval);
+            }
+
+            const particleCount = 50 * (timeLeft / duration);
+
+            // since particles fall down, start a bit higher than random
+            confetti(
+                Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                })
+            );
+            confetti(
+                Object.assign({}, defaults, {
+                    particleCount,
+                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                })
+            );
+        }, 250);
+    }
+
+    const checkWinner = async (array, turn) => {
+        const tiles = document.querySelectorAll('button');
         console.log("hi");
         for (const correctArray of correctCombination) {
             if (correctArray.every(e => array.includes(e))) {
-                console.log("a win");
+                tiles.forEach(btn => btn.disabled = true);
+                confeti()
+                if (turn % 2) {
+                    console.log("face win");
+                    await sleep(700)
+                    gameOver(turn)
+                } else {
+                    console.log("apple win");
+                    await sleep(4000)
+                    gameOver(turn)
+
+                }
                 return true
             }
         }
@@ -90,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
             xArray.push(parseInt(tileId));
             xArray.sort();
             console.log(xArray);
-            checkWinner(xArray);
+            checkWinner(xArray, turn);
         } else {
             console.log("It's o's turn");
             tile.innerHTML = `<img class="card-face image-back" src="./assets/apple.png" alt="card" />`;
@@ -98,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
             oArray.push(parseInt(tileId));
             oArray.sort();
             console.log(oArray);
-            checkWinner(oArray);
+            checkWinner(oArray, turn);
         }
         turn++;
     }
